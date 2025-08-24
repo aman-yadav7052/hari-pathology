@@ -134,7 +134,7 @@ function fixMobileNavigation() {
 }
 
 // ---------- DATA ----------
-const labPhoneNumber = "6393345938";
+const labPhoneNumber = "7307778314,7052994882";
 const homeVisitFee = 150;
 
 const testData = [
