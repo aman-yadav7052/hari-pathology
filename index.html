@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Hari Pathology">
+  <meta name="application-name" content="Hari Pathology">
+  <meta name="theme-color" content="#3b82f6">
+  <meta name="msapplication-TileColor" content="#3b82f6">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="MobileOptimized" content="width">
+  
+  <title>Hari Pathology - Professional Diagnostic Services</title>
+  
+  <!-- Preload critical resources -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" href="script.js" as="script">
+  
+  <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Chart.js CDN (pricing chart ke liye) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  
+  <script src="script.js" defer></script>
+  
+  <!-- Mobile-specific CSS -->
+  <style>
+    /* Mobile-specific fixes */
+    @media (max-width: 768px) {
+      body {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      
+      .container {
+        width: 95%;
+        padding: 0 10px;
+      }
+      
+      .hero {
+        padding: 40px 0;
+      }
+      
+      .hero h2 {
+        font-size: 24px !important;
+        line-height: 1.3;
+      }
+      
+      .hero p {
+        font-size: 16px !important;
+      }
+      
+      .slide-btn {
+        display: none !important;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px;
+      }
+      
+      .stat-card {
+        padding: 15px;
+      }
+      
+      .stat-number {
+        font-size: 28px;
+      }
+      
+      .grid.three {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .grid.four {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+      
+      .test-categories {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .category-btn {
+        width: 200px;
+        margin-bottom: 10px;
+      }
+      
+      .profile-wrap {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+      }
+      
+      .profile-img {
+        margin: 0 auto 20px;
+      }
+      
+      .credentials {
+        justify-content: center;
+      }
+      
+      .contact {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr !important;
+        text-align: center;
+      }
+      
+      .testimonial-btn {
+        display: none !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stats-grid {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .grid.four {
+        grid-template-columns: 1fr !important;
+      }
+      
+      .hero h2 {
+        font-size: 20px !important;
+      }
+      
+      .hero p {
+        font-size: 14px !important;
+      }
+      
+      .btn {
+        padding: 10px 16px;
+        font-size: 14px;
+      }
+      
+      .section-title {
+        font-size: 24px;
+      }
+    }
+    
+    /* Fix for mobile touch issues */
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    button, a {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Fix for iOS Safari */
+    @supports (-webkit-touch-callout: none) {
+      .container {
+        width: 92%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <h1 class="brand"><i class="fas fa-microscope"></i> Hari Pathology</h1>
+      <nav class="menu">
+        <a href="#profile">Profile</a>
+        <a href="#services">Suvidhayein</a>
+        <a href="#tests">Tests</a>
+        <a href="#pricing-chart">Prices</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#booking">Booking</a>
+        <a href="#feedback">Feedback</a>
+        <a href="#contact">Sampark</a>
+      </nav>
+      <button id="themeToggle" class="btn small"><i class="fas fa-moon"></i></button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero with Slideshow -->
+    <section class="hero">
+      <div class="slideshow-container">
+        <div class="slide active">
+          <h2>Aapki Sehat Ke Saathi, <br/> Hamari Reports Par Poora Bharosa.</h2>
+          <p>10+ saal ke anubhav ke saath, tez, sahi aur sasti jaanch ki suvidha.</p>
+          <a class="btn" href="#booking"><i class="fas fa-calendar-check"></i> Abhi Test Book Karein</a>
+        </div>
+        <div class="slide">
+          <h2>Ghar Se Sample Collection <br/> Aapki Suvidha Ke Liye</h2>
+          <p>Ghar baithe professional sample collection service. ₹150 mein home visit.</p>
+          <a class="btn" href="#services"><i class="fas fa-home"></i> Home Collection</a>
+        </div>
+        <div class="slide">
+          <h2>Same Day Reports <br/> Emergency Cases Ke Liye</h2>
+          <p>Urgent cases mein same day reports. Aapki sehat hamari priority.</p>
+          <a class="btn" href="#contact"><i class="fas fa-phone"></i> Contact Karein</a>
+        </div>
+        <button class="slide-btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="slide-btn next" onclick="changeSlide(1)">❯</button>
+      </div>
+      <div class="slide-dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <div class="stat-number" data-target="5000">0</div>
+          <div class="stat-label">Satisfied Patients</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-flask"></i>
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">Types of Tests</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-clock"></i>
+          <div class="stat-number" data-target="10">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-star"></i>
+          <div class="stat-number" data-target="98">0</div>
+          <div class="stat-label">Accuracy Rate %</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile -->
+    <section id="profile" class="card">
+      <div class="profile-wrap">
+        <div class="profile-img-set">
+          <img
+            src="images/WhatsApp Image 2025-08-24 at 08.48.01_810c5b24.jpg"
+            alt="Dr. Jitendra Kumar Yadav"
+            class="profile-img"
+          />
+        </div>
+        <div>
+          <div class="badge"><i class="fas fa-certificate"></i> Dr. Jitendra Kumar Yadav (DMLT)</div>
+          <h3>Trusted Diagnostic Partner</h3>
+          <p>
+            10+ saal ke experience ke saath certified DMLT professional. Community ko accurate aur reliable diagnostic services dena hamara mission hai. Hamare lab mein latest technology aur experienced staff hai jo aapki sehat ka dhyan rakhte hain.
+          </p>
+          <div class="credentials">
+            <div class="credential-item">
+              <i class="fas fa-graduation-cap"></i>
+              <span>DMLT Certified</span>
+            </div>
+            <div class="credential-item">
+              <i class="fas fa-award"></i>
+              <span>10+ Years Experience</span>
+            </div>
+            <div class="credential-item">
+              <i class="fas fa-shield-alt"></i>
+              <span>NABL Guidelines</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <h3 class="section-title">Humari Khaas Suvidhayein</h3>
+      <div class="grid four">
+        <div class="card small service-card">
+          <i class="fas fa-home service-icon"></i>
+          <h4>Ghar Se Sample Collection</h4>
+          <p>Suvidha ke liye home collection available. Professional staff aapke ghar aayega.</p>
+        </div>
+        <div class="card small service-card">
+          <i class="fas fa-mobile-alt service-icon"></i>
+          <h4>Jaldi Reports</h4>
+          <p>Tez aur sahi reports phone par. Same day reports for emergency cases.</p>
+        </div>
+        <div class="card small service-card">
+          <i class="fas fa-rupee-sign service-icon"></i>
+          <h4>Saste Daam</h4>
+          <p>High-quality tests affordable daamon par. No hidden charges.</p>
+        </div>
+        <div class="card small service-card">
+          <i class="fas fa-user-md service-icon"></i>
+          <h4>10+ Saal Ka Anubhav</h4>
+          <p>Experienced & certified staff. Latest technology equipment.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tests -->
+    <section id="tests">
+      <h3 class="section-title">Upalabdh Jaanch Aur Keematein</h3>
+      <div class="test-categories">
+        <button class="category-btn active" data-category="all">Sabhi Tests</button>
+        <button class="category-btn" data-category="basic">Basic Tests</button>
+        <button class="category-btn" data-category="advanced">Advanced Tests</button>
+        <button class="category-btn" data-category="special">Special Tests</button>
+      </div>
+      <div id="testsGrid" class="grid three"><!-- JS se fill hogi --></div>
+    </section>
+
+    <!-- Pricing Chart -->
+    <section id="pricing-chart">
+      <h3 class="section-title">Jaanch Keemo ka Comparison</h3>
+      <div class="card">
+        <div class="chart-box">
+          <canvas id="testPricesChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="card">
+      <h3 class="section-title">Patient Reviews</h3>
+      <div class="testimonials-container">
+        <div class="testimonial active">
+          <div class="testimonial-content">
+            <div class="stars">★★★★★</div>
+            <p>"Hari Pathology mein test karwaya, bahut professional service mili. Reports bhi jaldi aaye aur accurate thi."</p>
+            <div class="testimonial-author">
+              <strong>Rahul Kumar</strong>
+              <span>Prayagraj</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <div class="stars">★★★★★</div>
+            <p>"Home collection service bahut acchi hai. Ghar baithe sample collection, koi tension nahi."</p>
+            <div class="testimonial-author">
+              <strong>Priya Singh</strong>
+              <span>Sikandra</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <div class="stars">★★★★★</div>
+            <p>"Dr. Jitendra ji ka experience aur professionalism dekh kar confidence aata hai. Highly recommended."</p>
+            <div class="testimonial-author">
+              <strong>Amit Patel</strong>
+              <span>Silokhra</span>
+            </div>
+          </div>
+        </div>
+        <button class="testimonial-btn prev" onclick="changeTestimonial(-1)">❮</button>
+        <button class="testimonial-btn next" onclick="changeTestimonial(1)">❯</button>
+      </div>
+      <div class="testimonial-dots">
+        <span class="testimonial-dot active" onclick="currentTestimonial(1)"></span>
+        <span class="testimonial-dot" onclick="currentTestimonial(2)"></span>
+        <span class="testimonial-dot" onclick="currentTestimonial(3)"></span>
+      </div>
+    </section>
+
+    <!-- Booking -->
+    <section id="booking" class="card">
+      <h3 class="section-title">Test Book Karein</h3>
+      <p class="muted center">Form bharein, WhatsApp par request chali jayegi.</p>
+
+      <form id="bookingForm" class="form">
+        <div class="field">
+          <label for="name"><i class="fas fa-user"></i> Naam</label>
+          <input id="name" name="name" type="text" placeholder="Aapka naam" required />
+        </div>
+        <div class="field">
+          <label for="phone"><i class="fas fa-phone"></i> Phone</label>
+          <input id="phone" name="phone" type="tel" placeholder="10-digit number" required />
+        </div>
+        <div class="field">
+          <label for="testSelect"><i class="fas fa-flask"></i> Test</label>
+          <select id="testSelect" name="test" required><!-- JS se options --></select>
+        </div>
+        <div class="field">
+          <label for="date"><i class="fas fa-calendar"></i> Pasandeeda Date</label>
+          <input id="date" name="date" type="date" required />
+        </div>
+        <div class="field inline">
+          <input id="homeCollection" name="homeCollection" type="checkbox" />
+          <label for="homeCollection"><i class="fas fa-home"></i> Ghar se Sample Collection (₹150)</label>
+        </div>
+
+        <button class="btn" type="submit"><i class="fab fa-whatsapp"></i> WhatsApp Par Book Karein</button>
+        <p id="msg" class="success center" hidden></p>
+      </form>
+    </section>
+
+    <!-- Feedback -->
+    <section id="feedback" class="card">
+      <h3 class="section-title">Humein Feedback Bhejein</h3>
+      <form id="feedbackForm" class="form">
+        <div class="field">
+          <label for="fbName"><i class="fas fa-user"></i> Naam</label>
+          <input id="fbName" name="name" type="text" placeholder="Aapka naam" required />
+        </div>
+        <div class="field">
+          <label for="fbPhone"><i class="fas fa-phone"></i> Phone</label>
+          <input id="fbPhone" name="phone" type="tel" placeholder="10-digit number" required />
+        </div>
+        <div class="field">
+          <label for="fbMsg"><i class="fas fa-comment"></i> Aapka Sandesh</label>
+          <textarea id="fbMsg" name="message" rows="3" placeholder="Feedback likhein" required></textarea>
+        </div>
+        <button class="btn" type="submit"><i class="fab fa-whatsapp"></i> WhatsApp Par Feedback Bhejein</button>
+        <p id="fbStatus" class="success center" hidden></p>
+      </form>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h3 class="section-title">Sampark Jaankari</h3>
+      <div class="card contact">
+        <div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Phone:</strong> <a href="tel:6393345938">6393345938</a>, <a href="tel:7307778314">7307778314</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email:</strong> <a href="mailto:aman.705299@gmail.com">aman.705299@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Address:</strong> Hari Pathology, Near Silokhra, Sikandra, Prayagraj
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>Timings:</strong> Mon–Sat, 9:00 AM – 7:00 PM
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-mobile-alt"></i>
+            <div>
+              <strong>UPI:</strong> 6393345938@ibl
+            </div>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.628821961674!2d81.8592403150145!3d25.45070598377926!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399aca7b0d8f7e2b%3A0x2b5f3a6a6a2a4b8c!2sSikandra%2C%20Prayagraj%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1678886000000!5m2!1sen!2sin"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4><i class="fas fa-microscope"></i> Hari Pathology</h4>
+          <p>Professional diagnostic services with 10+ years of experience. Your health, our priority.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="#profile">About Us</a>
+          <a href="#services">Services</a>
+          <a href="#tests">Tests</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <p><i class="fas fa-phone"></i> 6393345938</p>
+          <p><i class="fas fa-envelope"></i> aman.705299@gmail.com</p>
+          <p><i class="fas fa-map-marker-alt"></i> Sikandra, Prayagraj</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Hari Pathology. Sabhi Adhikaar Surakshit.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
